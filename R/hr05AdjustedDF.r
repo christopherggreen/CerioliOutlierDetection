@@ -8,22 +8,22 @@ hr05AdjustedDF <-
 # Christopher G. Green
 # 2011
 #
-function( mcd.alpha, m.asy, p, n, method=c("HR05","CG") ) {
+function( n.obs, p.dim, mcd.alpha, m.asy, method=c("HR05","CG") ) {
 
   method <- match.arg(method)
   retval <- numeric(0)
 
   retval <- if ( method == "HR05" ) {
-    if ( mcd.alpha == floor((n+p+1)/2)/n ) {
+    if ( mcd.alpha == max.bdp.mcd.alpha(n.obs, p.dim) ) {
       # original equation from Hardin and Rocke 2005
-      hr05.predict.050.hr05(m.asy,p,n)
+      hr05.predict.050.hr05(m.asy,p.dim,n.obs)
     } else {
       stop("HR05 unsupported for alpha other than maximum breakdown case.")
     }
   } else if ( method == "CG" ) {
     # use fitted models to adjust asymptotic degrees of freedom to 
     # simulated values for small samples
-    predictfunc( m.asy, p, n, mcd.alpha )
+    predictfunc( m.asy, p.dim, n.obs, mcd.alpha )
   }
 
   retval
