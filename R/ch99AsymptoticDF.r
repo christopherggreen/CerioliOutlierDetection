@@ -8,7 +8,7 @@ ch99AsymptoticDF <-
 # Christopher G. Green
 # 2011
 #
-function( n.obs, p.dim, mcd.alpha )
+function( n.obs, p.dim, mcd.alpha=floor( (n.obs + p.dim + 1.)/2.)/n.obs )
 #
 {
 
