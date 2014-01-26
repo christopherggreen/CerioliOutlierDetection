@@ -1,0 +1,4 @@
+cggmisc.Rcheck
+.*\.bat
+.*\.gz
+.*\.zip

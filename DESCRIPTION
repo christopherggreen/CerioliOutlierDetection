@@ -1,0 +1,15 @@
+Package: CerioliOutlierDetection
+Type: Package
+Title: Outlier detection using the iterated RMCD method of Cerioli (2010) 
+Version: 1.0.0
+Date: 2014-01-25
+Author: Christopher G. Green
+Maintainer: <christopher.g.green@gmail.com> 
+Description: This package provides the iterated RMCD method of Cerioli (2010)
+	for multivariate outlier detection via robust Mahalanobis distances. It also
+	provides the finite-sample RMCD method discussed in the paper, as well as 
+	the methods provided in Hardin and Rocke (2005).
+License: GPL (>= 2)
+Copyright: Christopher G. Green
+LazyLoad: yes
+Depends: robustbase,rrcov,timeSeries 

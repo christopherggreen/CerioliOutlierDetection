@@ -1,0 +1,8 @@
+export(
+	ch99AsymptoticDF,	
+	hr05AdjustedDF,
+	hr05CriticalValue,
+	hr05CutoffMvnormal,
+	cerioli2010.fsrmcd.test,
+	cerioli2010.irmcd.test
+)
