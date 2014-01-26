@@ -9,16 +9,16 @@
   Rocke (2005) or in Green (2014).
 }
 \usage{
-hr05AdjustedDF(mcd.alpha, m.asy, p, n, method = c("HR05", "CG"))
+hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "CG"))
 }
 \arguments{
+  \item{n.obs}{(Integer) Number of observations}
+  \item{p.dim}{(Integer) Dimension of the data, i.e.,
+    number of variables. }
   \item{mcd.alpha}{(Numeric) Value that determines the
     fraction of the sample used to compute the MCD estimate. }
   \item{m.asy}{(Numeric) Asymptotic Wishart degrees of freedom, as
     returned by \code{\link{ch99AsymptoticDF}}.}
-  \item{p}{(Integer) Dimension of the data, i.e.,
-    number of variables. }
-  \item{n}{(Integer) Number of observations}
   \item{method}{Either "HR05" to use the method of Hardin and Rocke (2005),
     or "CG" to use the method of Green (2014).}
 }
@@ -45,6 +45,9 @@ hr05AdjustedDF(mcd.alpha, m.asy, p, n, method = c("HR05", "CG"))
 \value{ Returns the adjusted F degrees of freedom based on the
   asymptotic value, the dimension of the data, and the sample size.
 }
+\note{ This function is typically not called directly by users; rather
+  it is used in the construction of other functions.
+}
 \references{
 C. G. Green. Tests for Multivariate Outliers Based on the Calibrated MCD 
 Estimator. Working Paper, 2014.
@@ -61,7 +64,7 @@ Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>
 \examples{
 hr05tester <- function(n,p) {
 	a <- floor( (n+p+1)/2 )/n
-	hr05AdjustedDF( a, ch99AsymptoticDF(n,p,a)$m.hat.asy, p, n, method="HR05" )
+	hr05AdjustedDF( n, p, a, ch99AsymptoticDF(n,p,a)$m.hat.asy, method="HR05" )
 }
 # compare to table on page 941 of Hardin and Rocke (2005)
 hr05tester(  50, 5)
