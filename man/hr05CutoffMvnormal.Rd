@@ -31,7 +31,13 @@
     factor if you need it for your application.}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+  \code{hr05CutoffMvnormal} is the typical way in which a user will calculate
+  critical values for testing outlyingness via MCD-based Mahalanobis distances.
+  The critical values come from the \eqn{F} distributional approximation 
+  derived by Hardin and Rocke (2005). One can use either the corrected degrees
+  of freedom parameter derived in that paper (which was only shown to work for 
+  the maximum breakdown point case of MCD), or the correction derived in 
+  Green (2014) for arbitrary values of \code{mcd.alpha}.
 }
 \value{
   \item{ cutoff.pred }{ Critical value based on the predicted
