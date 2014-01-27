@@ -94,7 +94,6 @@ These are draft functions; they may change once they are officially published.
 }
 \examples{
 require(mvtnorm, quiet=TRUE)
-require(robustbase, quiet=TRUE)
 
 ############################################
 # dimension v, number of observations n
