@@ -5,7 +5,7 @@ hr05CutoffMvnormal <-
 # assumes MCD subset comes from MV normal
 #
 # Author: Christopher G. Green
-# Date: 2/5/2010
+# Date: 2010-02-05
 #
 function( n.obs, p.dim, 
   mcd.alpha=max.bdp.mcd.alpha(n.obs, p.dim), signif.alpha=0.05, 
