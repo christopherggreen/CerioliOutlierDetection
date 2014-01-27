@@ -1,5 +1,7 @@
 \name{hr05AdjustedDF}
 \alias{hr05AdjustedDF}
+\concept{Mahalanobis Distances}
+\concept{Outliers}
 \title{Adjusted Degrees of Freedom for Testing Robust Mahalanobis Distances for Outlyingness}
 \description{
   Computes the adjusted F degrees of freedom for testing
@@ -16,9 +18,13 @@ hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "CG"))
   \item{p.dim}{(Integer) Dimension of the data, i.e.,
     number of variables. }
   \item{mcd.alpha}{(Numeric) Value that determines the
-    fraction of the sample used to compute the MCD estimate. }
-  \item{m.asy}{(Numeric) Asymptotic Wishart degrees of freedom, as
-    returned by \code{\link{ch99AsymptoticDF}}.}
+    fraction of the sample used to compute the MCD estimate. 
+	Default value corresponds to the maximum breakdown point
+	case of the MCD.}
+  \item{m.asy}{(Numeric) Asymptotic Wishart degrees of freedom. 
+  	The default value uses \code{\link{ch99AsymptoticDF}} to 
+	obtain the the asymptotic value, but the user can also 
+	provide a pre-computed value.}
   \item{method}{Either "HR05" to use the method of Hardin and Rocke (2005),
     or "CG" to use the method of Green (2014).}
 }
@@ -66,7 +72,27 @@ hr05tester <- function(n,p) {
 	a <- floor( (n+p+1)/2 )/n
 	hr05AdjustedDF( n, p, a, ch99AsymptoticDF(n,p,a)$m.hat.asy, method="HR05" )
 }
-# compare to table on page 941 of Hardin and Rocke (2005)
+# compare to m_pred in table on page 941 of Hardin and Rocke (2005)
+hr05tester(  50, 5)
+hr05tester( 100,10)
+hr05tester( 500,10)
+hr05tester(1000,20)
+
+# using default arguments
+hr05tester <- function(n,p) {
+	hr05AdjustedDF( n, p, method="HR05" )
+}
+# compare to m_pred in table on page 941 of Hardin and Rocke (2005)
+hr05tester(  50, 5)
+hr05tester( 100,10)
+hr05tester( 500,10)
+hr05tester(1000,20)
+
+# Green (2014) improved method
+hr05tester <- function(n,p) {
+	hr05AdjustedDF( n, p, method="CG" )
+}
+# compare to m_sim in table on page 941 of Hardin and Rocke (2005)
 hr05tester(  50, 5)
 hr05tester( 100,10)
 hr05tester( 500,10)
