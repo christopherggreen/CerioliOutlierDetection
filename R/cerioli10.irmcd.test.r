@@ -1,6 +1,6 @@
 cerioli2010.irmcd.test <- 
 # 
-# implements the iterated finite-sample reweighted MCD
+# implements the iterated reweighted MCD
 # outlier detection method presented in Cerioli (2010)
 #
 # Author: Christopher G. Green
