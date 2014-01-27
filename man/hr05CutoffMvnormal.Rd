@@ -20,7 +20,7 @@
     MCD.
   }
   \item{signif.alpha}{ (Numeric) Significance level for testing the 
-    null hypothesis 
+    null hypothesis. Default value is 0.05. 
   }
   \item{method}{Either "HR05" to use the method of Hardin and Rocke (2005),
     or "CG" to use the method of Green (2014).}
@@ -34,28 +34,39 @@
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
+  \item{ cutoff.pred }{ Critical value based on the predicted
+    Wishart degrees of freedom \code{m.pred} }
+  \item{ cutoff.asy  }{ Critical value based on the asymptotic
+    Wishart degrees of freedom \code{m.asy} }
+  \item{ c.alpha     }{ The value of the consistency correction
+    factor, \eqn{c_{\alpha} } }
+  \item{ m.asy       }{Asymptotic Wishart degrees of freedom
+    parameter }
+  \item{ m.pred      }{Predicted Wishart degrees of freedom 
+    (using the method specified in \code{method} }
+  \item{ n.obs       }{Number of observations}
+  \item{ p.dim       }{Number of variables}
 }
 \references{
+C. G. Green. Tests for Multivariate Outliers Based on the Calibrated MCD 
+Estimator. Working Paper, 2014.
+
 J. Hardin and D. M. Rocke. The distribution of robust distances. Journal of Computational
 and Graphical Statistics, 14:928–946, 2005.
-
-Christopher G. Green
 }
 \author{
 Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>
 }
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{hr05CriticalValue}}, \code{\link{hr05CutoffMvnormal}}, 
+\code{\link{hr05AdjustedDF}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-"hr05CutoffMvnormal"
+# examples from page 941 of Hardin and Rocke
+hr05CutoffMvnormal(n.obs=50  , p.dim=5 , signif.alpha=0.05)
+hr05CutoffMvnormal(n.obs=100 , p.dim=10, signif.alpha=0.05)
+hr05CutoffMvnormal(n.obs=500 , p.dim=10, signif.alpha=0.05)
+hr05CutoffMvnormal(n.obs=1000, p.dim=20, signif.alpha=0.05)
 }
 \keyword{ robust }
 \keyword{ multivariate }
