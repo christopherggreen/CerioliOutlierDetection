@@ -51,7 +51,7 @@ Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>
 \code{\link{hr05AdjustedDF}}, \code{\link{hr05CutoffMVnormal}}
 }
 \examples{
-a
+hr05CriticalValue( hr05AdjustedDF( 1000, 20 ), 20, 0.05 ) 
 }
 \keyword{ robust }
 \keyword{ multivariate }
