@@ -33,21 +33,21 @@ cerioli2010.irmcd.test(datamat,
     0.5 and 1. See the \code{\link{covMcd}} documentation 
     in the \code{\link[robustbase]{robustbase}} library.
   }
-  \item{signif.alpha}{
+  \item{signif.alpha}{ (Numeric)
     Desired nominal size of the outlier test (e.g., 0.05). 
     Equivalently, significance level at which to test 
     observations for outlyingness.
   }
-  \item{nsamp}{
+  \item{nsamp}{ (Integer)
     Number of subsamples to use in computing the MCD. see 
     \code{\link{covMcd}} documentation in the
     \code{\link[robustbase]{robustbase}} library.
   }
-  \item{nmini}{
+  \item{nmini}{ (Integer)
     see \code{\link{covMcd}} documentation in the
     \code{\link[robustbase]{robustbase}} library.
   }
-  \item{trace}{
+  \item{trace}{ (Logical)
     see \code{\link{covMcd}} documentation in the
     \code{\link[robustbase]{robustbase}} library.
    }
