@@ -8,7 +8,11 @@ hr05AdjustedDF <-
 # Christopher G. Green
 # 2011
 #
-function( n.obs, p.dim, mcd.alpha, m.asy, method=c("HR05","CG") ) {
+function( n.obs, p.dim, 
+  mcd.alpha = max.bdp.mcd.alpha(n.obs, p.dim), 
+  m.asy = ch99AsymptoticDF( n.obs, p.dim, mcd.alpha )$m.hat.asy, 
+  method=c("HR05","CG") ) 
+{
 
   method <- match.arg(method)
   retval <- numeric(0)
