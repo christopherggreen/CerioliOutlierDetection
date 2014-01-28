@@ -58,14 +58,13 @@ C. G. Green. Tests for Multivariate Outliers Based on the Calibrated MCD
 Estimator. Working Paper, 2014.
 
 J. Hardin and D. M. Rocke. The distribution of robust distances. Journal of Computational
-and Graphical Statistics, 14:928–946, 2005.
+and Graphical Statistics, 14:928-946, 2005.
 }
 \author{
 Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>
 }
 \seealso{
-\code{\link{hr05CriticalValue}}, \code{\link{hr05CutoffMvnormal}}, 
-\code{\link{hr05AdjustedDF}}
+\code{\link{hr05CriticalValue}}, \code{\link{hr05AdjustedDF}}
 }
 \examples{
 # examples from page 941 of Hardin and Rocke

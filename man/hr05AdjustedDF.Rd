@@ -41,7 +41,7 @@ hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "CG"))
   breakdown point of the estimator.
 
   With argument \code{method = "HR05"} the function returns 
-  \eqn{m_\text{pred}} as given in Equation 3.4 of Hardin and Rocke (2005).
+  \eqn{m_{pred}} as given in Equation 3.4 of Hardin and Rocke (2005).
   The Hardin and Rocke method is only supported for the maximum breakdown
   point case; an error will be generated for other values of \code{mcd.alpha}.
 
@@ -59,7 +59,7 @@ C. G. Green. Tests for Multivariate Outliers Based on the Calibrated MCD
 Estimator. Working Paper, 2014.
 
 J. Hardin and D. M. Rocke. The distribution of robust distances. Journal of Computational
-and Graphical Statistics, 14:928–946, 2005.
+and Graphical Statistics, 14:928-946, 2005.
 }
 \author{
 Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>

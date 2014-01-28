@@ -31,25 +31,30 @@ cerioli2010.irmcd.test(datamat,
     Default value is corresponds to the maximum breakpoint
     case of the MCD; valid values are between
     0.5 and 1. See the \code{\link{covMcd}} documentation 
-    in the \code{\link[robustbase]{robustbase}} library.
+    in the \code{robustbase} library.
   }
   \item{signif.alpha}{ (Numeric)
     Desired nominal size of the outlier test (e.g., 0.05). 
     Equivalently, significance level at which to test 
-    observations for outlyingness.
+    observations for outlyingness. Unlike 
+	\code{\link{cerioli2010.fsrmcd.test}}, this function will 
+	calculate the appropriate significance level for the
+	intersection hypothesis based on \code{signif.alpha},
+	so \code{signif.alpha} should be the desired nominal
+	size for detecting outliers.
   }
   \item{nsamp}{ (Integer)
     Number of subsamples to use in computing the MCD. see 
     \code{\link{covMcd}} documentation in the
-    \code{\link[robustbase]{robustbase}} library.
+    \code{robustbase} library.
   }
   \item{nmini}{ (Integer)
     see \code{\link{covMcd}} documentation in the
-    \code{\link[robustbase]{robustbase}} library.
+    \code{robustbase} library.
   }
   \item{trace}{ (Logical)
     see \code{\link{covMcd}} documentation in the
-    \code{\link[robustbase]{robustbase}} library.
+    \code{robustbase} library.
    }
 }
 \details{
@@ -63,13 +68,13 @@ cerioli2010.irmcd.test(datamat,
   an adjusted significance parameter.
 }
 \value{
-  \item{outliers}{a matrix of dimension \code{nrow(datamat)} by 
-  \code{length(signif.alpha)} indicating 
-    whether each observation is an outlier. The \code{i-th} 
+  \item{outliers}{A matrix of dimension \code{nrow(datamat)} by 
+    \code{length(signif.alpha)} indicating 
+    whether each row of \code{datamat} is an outlier. The \code{i-th} 
     column corresponds to the result of testing observations
     for outlyingness at significance level \code{signif.alpha[i]}.}
   \item{mahdist.rw}{a matrix of dimension \code{nrow(datamat)} by
-  \code{length(signif.alpha)} of Mahalanobis distances computed
+    \code{length(signif.alpha)} of Mahalanobis distances computed
     using the finite-sample reweighted MCD methodology in
     Cerioli (2010). Even though the distances do not depend
     on \code{signif.alpha}, there is one column per entry in 
@@ -81,10 +86,10 @@ Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>
 }
 \references{
 Andrea Cerioli. Multivariate outlier detection with high-breakdown estimators. 
-Journal of the American Statistical Association, 105(489):147–156, 2010.
+Journal of the American Statistical Association, 105(489):147-156, 2010.
 
 Andrea Cerioli, Marco Riani, and Anthony C. Atkinson. Controlling the size of multivariate
-outlier tests with the mcd estimator of scatter. Statistical Computing, 19:341–353, 2009.
+outlier tests with the mcd estimator of scatter. Statistical Computing, 19:341-353, 2009.
 }
 \note{
 These are draft functions; they may change once they are officially published.

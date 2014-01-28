@@ -38,7 +38,7 @@ ch99AsymptoticDF(n.obs, p.dim, mcd.alpha)
 }
 \details{
   The consistency factor \code{c.alpha} is already available in the
-  \code{\link{robustbase}} library as the private function 
+  \code{robustbase} library as the private function 
   \code{MCDcons}. (See the code for \code{covMcd}.) \code{ch99AsymptoticDF}
   uses the result of \code{MCDcons} for consistency.
 
@@ -51,10 +51,10 @@ Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>
 \references{
 Christopher Croux and Gentiane Haesbroeck. Influence function and efficiency of the minimum
 covariance determinant scatter matrix estimator. Journal of Multivariate Analysis,
-71:161–190, 1999.
+71:161-190, 1999.
 
 J. Hardin and D. M. Rocke. The distribution of robust distances. Journal of Computational
-and Graphical Statistics, 14:928–946, 2005.
+and Graphical Statistics, 14:928-946, 2005.
 }
 \examples{
 # compare to table from p941 of Hardin and Rocke (2005)

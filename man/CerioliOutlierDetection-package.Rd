@@ -1,30 +1,27 @@
-\name{cggRcalibration-package}
-\alias{cggRcalibration-package}
-\alias{cggRcalibration}
+\name{CerioliOutlierDetection-package}
+\alias{CerioliOutlierDetection-package}
+\alias{CerioliOutlierDetection}
 \docType{package}
 \title{
-cggRcalibration: package for Cerioli MCD outlier detection project
+CerioliOutlierDetection: package for implementing Cerioli (2010) outlier detection method
 }
 \description{
-Implements the outlier detection methodology of Cerioli (2010).
+Implements the outlier detection methodology of Cerioli (2010) based on 
+Mahalanobis distances and the minimum covariance determinant (MCD) estimate 
+of dispersion.
 }
 \details{
-\tabular{ll}{
-Package: \tab cggRcalibration\cr
-Type: \tab Package\cr
-Version: \tab 1.0.12\cr
-}
+  \tabular{ll}{
+    Package: \tab CerioliOutlierDetection\cr
+    Type: \tab Package\cr
+    Version: \tab 1.0.0\cr
+  }
 }
 \author{
 Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>
 }
 \references{
 Andrea Cerioli. Multivariate outlier detection with high-breakdown estimators. 
-Journal of the American Statistical Association, 105(489):147–156, 2010.
-
-Andrea Cerioli, Marco Riani, and Anthony C. Atkinson. Controlling the size of multivariate
-outlier tests with the mcd estimator of scatter. Statistical Computing, 19:341–353, 2009.
+Journal of the American Statistical Association, 105(489):147-156, 2010.
 }
 \keyword{ package }
-\seealso{
-}

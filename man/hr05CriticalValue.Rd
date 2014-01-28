@@ -27,7 +27,7 @@ hr05CriticalValue(em, p.dim, signif.alpha)
   distance calculation was adjusted by the consistency factor, so it is not 
   included in the calculation here. (If one needs the consistency factor it
   is returned by the function \code{\link{ch99AsymptoticDF}} in this package
-  or by the private function \code{MCDcons} in the \code{\link{robustbase}} 
+  or by the private function \code{MCDcons} in the \code{robustbase} 
   package.
 }
 \value{ The appropriate cutoff value (from the \eqn{F} 
@@ -42,13 +42,13 @@ hr05CriticalValue(em, p.dim, signif.alpha)
 }
 \references{
 J. Hardin and D. M. Rocke. The distribution of robust distances. Journal of Computational
-and Graphical Statistics, 14:928–946, 2005.
+and Graphical Statistics, 14:928-946, 2005.
 }
 \author{
 Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>
 }
 \seealso{
-\code{\link{hr05AdjustedDF}}, \code{\link{hr05CutoffMVnormal}}
+\code{\link{hr05AdjustedDF}}, \code{\link{hr05CutoffMvnormal}}
 }
 \examples{
 hr05CriticalValue( hr05AdjustedDF( 1000, 20 ), 20, 0.05 ) 
