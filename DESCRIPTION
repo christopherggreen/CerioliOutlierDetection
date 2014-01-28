@@ -13,3 +13,4 @@ License: GPL (>= 2)
 Copyright: Christopher G. Green
 LazyLoad: yes
 Depends: robustbase
+Suggests: rrcov, robust, mvtnorm
