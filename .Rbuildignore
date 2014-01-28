@@ -1,4 +1,6 @@
-cggmisc.Rcheck
+CerioliOutlierDetection.Rcheck
 .*\.bat
 .*\.gz
 .*\.zip
+.gitignore
+.git
