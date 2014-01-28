@@ -49,7 +49,7 @@
   \item{ m.asy       }{Asymptotic Wishart degrees of freedom
     parameter }
   \item{ m.pred      }{Predicted Wishart degrees of freedom 
-    (using the method specified in \code{method} }
+    (using the method specified in \code{method}) }
   \item{ n.obs       }{Number of observations}
   \item{ p.dim       }{Number of variables}
 }
