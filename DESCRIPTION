@@ -12,4 +12,4 @@ Description: This package provides the iterated RMCD method of Cerioli (2010)
 License: GPL (>= 2)
 Copyright: Christopher G. Green
 LazyLoad: yes
-Depends: robustbase,rrcov,timeSeries 
+Depends: robustbase
