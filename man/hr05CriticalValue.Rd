@@ -3,7 +3,7 @@
 \title{ Hardin and Rocke (2005) Critical Value for Testing MCD-based Mahalanobis Distances
 }
 \description{
-  Hardin and Rocke(2005) provide an approximate \eqn{F} distribution for
+  Hardin and Rocke (2005) provide an approximate \eqn{F} distribution for
   testing whether Mahalanobis distances calculated using the MCD dispersion
   estimate are unusually large, and hence, indicative of outliers in the data.
 }
