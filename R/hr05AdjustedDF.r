@@ -44,8 +44,11 @@ hr05.predict.050.hr05 <- function(m.asy, p, n)  {
 predictfunc <- function(m.asy, p, n, alpha) {
   # use fitted models to adjust asymptotic degrees of freedom to 
   # simulated values for small samples
-  z1 <- 13.1072594 - 15.0079984 * alpha + 0.1347435 * p
-  z2 <- n^(0.5119686 + 0.2235726 * alpha)
+  #z1 <- 13.1072594 - 15.0079984 * alpha + 0.1347435 * p
+  #z2 <- n^(0.5119686 + 0.2235726 * alpha)
+  # 2014-03-01 update
+  z1 <- 13.263331 - 15.092671 * alpha + 0.126725 * p
+  z2 <- n^(0.567457 + 0.149904 * alpha)
   m.asy * exp( z1/z2 )
 }
 
