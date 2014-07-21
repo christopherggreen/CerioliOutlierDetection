@@ -11,7 +11,7 @@
   Rocke (2005) or in Green (2014).
 }
 \usage{
-hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "CG"))
+hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "GM14"))
 }
 \arguments{
   \item{n.obs}{(Integer) Number of observations}
@@ -26,7 +26,7 @@ hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "CG"))
 	obtain the the asymptotic value, but the user can also 
 	provide a pre-computed value.}
   \item{method}{Either "HR05" to use the method of Hardin and Rocke (2005),
-    or "CG" to use the method of Green (2014).}
+    or "GM14" to use the method of Green and Martin (2014).}
 }
 \details{
   Hardin and Rocke (2005) computed an approximate \eqn{F} distribution
@@ -45,8 +45,8 @@ hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "CG"))
   The Hardin and Rocke method is only supported for the maximum breakdown
   point case; an error will be generated for other values of \code{mcd.alpha}.
 
-  The argument \code{method = "CG"} uses the extended methodology 
-  described in Green (2014).
+  The argument \code{method = "GM14"} uses the extended methodology 
+  described in Green and Martin (2014).
 }
 \value{ Returns the adjusted F degrees of freedom based on the
   asymptotic value, the dimension of the data, and the sample size.
@@ -55,8 +55,10 @@ hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "CG"))
   it is used in the construction of other functions.
 }
 \references{
-C. G. Green. Tests for Multivariate Outliers Based on the Calibrated MCD 
-Estimator. Working Paper, 2014.
+C. G. Green and R. Douglas Martin. An extension of a method of Hardin and Rocke, with
+an application to multivariate outlier detection via the IRMCD method of Cerioli.
+Working Paper, 2014. Available from 
+\url{http://students.washington.edu/cggreen/uwstat/papers/cerioli_extension.pdf}
 
 J. Hardin and D. M. Rocke. The distribution of robust distances. Journal of Computational
 and Graphical Statistics, 14:928-946, 2005.
@@ -90,7 +92,7 @@ hr05tester(1000,20)
 
 # Green (2014) improved method
 hr05tester <- function(n,p) {
-	hr05AdjustedDF( n, p, method="CG" )
+	hr05AdjustedDF( n, p, method="GM14" )
 }
 # compare to m_sim in table on page 941 of Hardin and Rocke (2005)
 hr05tester(  50, 5)

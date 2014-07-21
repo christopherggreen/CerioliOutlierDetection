@@ -9,7 +9,7 @@ hr05CutoffMvnormal <-
 #
 function( n.obs, p.dim, 
   mcd.alpha=max.bdp.mcd.alpha(n.obs, p.dim), signif.alpha=0.05, 
-  method=c("CG","HR05"), use.consistency.correction=FALSE ) 
+  method=c("GM14","HR05"), use.consistency.correction=FALSE ) 
 {
 
   method          <- match.arg(method)

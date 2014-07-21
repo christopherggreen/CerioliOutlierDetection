@@ -14,7 +14,7 @@ of dispersion.
   \tabular{ll}{
     Package: \tab CerioliOutlierDetection\cr
     Type: \tab Package\cr
-    Version: \tab 1.0.0\cr
+    Version: \tab 1.0.5\cr
   }
 }
 \author{

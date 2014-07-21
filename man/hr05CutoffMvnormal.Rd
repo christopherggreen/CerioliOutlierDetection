@@ -4,10 +4,10 @@
 \description{
   Provides critical values for testing for outlyingness using MCD-based 
   Mahalanobis distances and the \eqn{F} distributional approximation 
-  developed by Hardin and Rocke (2005) or the enhancement by Green (2014).
+  developed by Hardin and Rocke (2005) or the enhancement by Green and Martin (2014).
 }
 \usage{ hr05CutoffMvnormal(n.obs, p.dim, mcd.alpha, signif.alpha, 
-  method = c("CG", "HR05"), use.consistency.correction = FALSE)
+  method = c("GM14", "HR05"), use.consistency.correction = FALSE)
 }
 \arguments{
   \item{n.obs}{(Integer) Number of observations}
@@ -23,7 +23,7 @@
     null hypothesis. Default value is 0.05. 
   }
   \item{method}{Either "HR05" to use the method of Hardin and Rocke (2005),
-    or "CG" to use the method of Green (2014).}
+    or "GM14" to use the method of Green and Martin (2014).}
   \item{use.consistency.correction}{ (Logical) By default, the method does
     not multiply the cutoff values by the consistency correction for the MCD,
     under the assumption that the correction was applied during the calculation
@@ -54,8 +54,10 @@
   \item{ p.dim       }{Number of variables}
 }
 \references{
-C. G. Green. Tests for Multivariate Outliers Based on the Calibrated MCD 
-Estimator. Working Paper, 2014.
+C. G. Green and R. Douglas Martin. An extension of a method of Hardin and Rocke, with
+an application to multivariate outlier detection via the IRMCD method of Cerioli.
+Working Paper, 2014. Available from 
+\url{http://students.washington.edu/cggreen/uwstat/papers/cerioli_extension.pdf}
 
 J. Hardin and D. M. Rocke. The distribution of robust distances. Journal of Computational
 and Graphical Statistics, 14:928-946, 2005.

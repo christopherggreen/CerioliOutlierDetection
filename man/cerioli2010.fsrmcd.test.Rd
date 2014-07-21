@@ -37,7 +37,8 @@ cerioli2010.fsrmcd.test(datamat,
 	to test observations for outlyingness. To test the
 	intersection hypothesis of no outliers in the data,
 	specify \eqn{\alpha = 1 - (1 - \gamma)^(1/n)}, where
-	\eqn{\gamma} is the nominal size of the test.
+	\eqn{\gamma} is the nominal size of the test and 
+	\eqn{n} is the number of observations.
   }
   \item{nsamp}{ (Integer)
     Number of subsamples to use in computing the MCD. see 
