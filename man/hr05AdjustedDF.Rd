@@ -8,7 +8,7 @@
   Mahalanobis distances calculated with the minimum covariance 
   determinant (MCD) robust dispersion estimate (for data with 
   a model normal distribution) as described in Hardin and 
-  Rocke (2005) or in Green (2014).
+  Rocke (2005) or in Green and Martin (2014).
 }
 \usage{
 hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "GM14"))
@@ -90,7 +90,7 @@ hr05tester( 100,10)
 hr05tester( 500,10)
 hr05tester(1000,20)
 
-# Green (2014) improved method
+# Green and Martin (2014) improved method
 hr05tester <- function(n,p) {
 	hr05AdjustedDF( n, p, method="GM14" )
 }

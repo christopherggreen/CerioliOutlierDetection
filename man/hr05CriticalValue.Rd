@@ -28,7 +28,7 @@ hr05CriticalValue(em, p.dim, signif.alpha)
   included in the calculation here. (If one needs the consistency factor it
   is returned by the function \code{\link{ch99AsymptoticDF}} in this package
   or by the private function \code{MCDcons} in the \code{robustbase} 
-  package.
+  package.)
 }
 \value{ The appropriate cutoff value (from the \eqn{F} 
   distributional approximation) for testing whether a

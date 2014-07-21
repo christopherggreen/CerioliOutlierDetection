@@ -37,7 +37,7 @@
   derived by Hardin and Rocke (2005). One can use either the corrected degrees
   of freedom parameter derived in that paper (which was only shown to work for 
   the maximum breakdown point case of MCD), or the correction derived in 
-  Green (2014) for arbitrary values of \code{mcd.alpha}.
+  Green and Martin (2014) for arbitrary values of \code{mcd.alpha}.
 }
 \value{
   \item{ cutoff.pred }{ Critical value based on the predicted
