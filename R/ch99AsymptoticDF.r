@@ -41,8 +41,11 @@ function( n.obs, p.dim, mcd.alpha=max.bdp.mcd.alpha(n.obs,p.dim) )
     # probability of square of z[1] being less than q.alpha
     p.alpha          <- pchisq(q.alpha, df=p.dim+2)
     # consistency factor
-    #c.alpha          <- one.minus.alpha / p.alpha
-    c.alpha          <- robustbase:::MCDcons(p.dim, mcd.alpha) 
+    c.alpha          <- one.minus.alpha / p.alpha
+	# 2014-07-21 CRAN no longer allows the use of :::, so 
+	# go back to the original way of calculating this (which
+	# is numerically identical to MCDcons)
+    #c.alpha          <- robustbase:::MCDcons(p.dim, mcd.alpha) 
     #robustbase:::MCDcnp2(v, n, mcd.alpha)
     # constants from theorem 1 of CH99 for the case of
     # a normal distribution
