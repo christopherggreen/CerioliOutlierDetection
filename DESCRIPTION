@@ -1,13 +1,14 @@
 Package: CerioliOutlierDetection
 Type: Package
 Title: Outlier detection using the iterated RMCD method of Cerioli (2010) 
-Version: 1.0.6
-Date: 2014-07-21
-Authors@R: c(person("Christopher G.","Green",role=c("aut","cre"),
-	email = "christopher.g.green@gmail.com"))
+Version: 1.0.7
+Date: 2014-07-28
+Authors@R: c(person(c("Christopher","G."),"Green",role=c("aut","cre"),
+	email = "christopher.g.green@gmail.com"),
+	person(c("R.","Doug"),"Martin",role="ths"))
 Maintainer: Christopher G. Green <christopher.g.green@gmail.com> 
 Depends: R (>= 3.0.0)
-Imports: robustbase
+Imports: robustbase (>= 0.91-1)
 Description: This package provides the iterated RMCD method of Cerioli (2010)
 	for multivariate outlier detection via robust Mahalanobis distances. It also
 	provides the finite-sample RMCD method discussed in the paper, as well as 

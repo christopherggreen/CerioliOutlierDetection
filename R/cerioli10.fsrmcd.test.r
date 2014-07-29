@@ -28,8 +28,11 @@ function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v),
   # 2011-07-17 move this calculation to the internal robustbase functions
   # 2011-10-09 should handle exact fit scenario more gracefully
   if ( mcd.out$exactfit > 1 ) stop("Exact fit detected in .fastmcd.")
-  ca        <- robustbase:::MCDcons(v, mcd.alpha) 
-  k         <- ca * robustbase:::MCDcnp2(v, n, mcd.alpha)
+  #ca        <- robustbase:::MCDcons(v, mcd.alpha) 
+  #k         <- ca * robustbase:::MCDcnp2(v, n, mcd.alpha)
+  # 2014-07-28 change to exported versions in robustbase 0.91-1
+  ca        <- robustbase::.MCDcons(v, mcd.alpha) 
+  k         <- ca * robustbase::.MCDcnp2(v, n, mcd.alpha)
   best      <- sort(as.vector(mcd.out$best))
   mcd.data  <- datamat[ best, ,drop=FALSE ]
 
@@ -68,7 +71,7 @@ function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v),
   mu.hat.rw    <- colMeans(mcd.data)
   mcd.data     <- sweep(mcd.data, 2, mu.hat.rw, check.margin=TRUE)
   sigma.hat.rw <- crossprod(mcd.data)
-  krmcd        <- robustbase:::MCDcons(v, 0.975)
+  krmcd        <- robustbase::.MCDcons(v, 0.975)
   sigma.hat.rw <- krmcd * sigma.hat.rw / ( m - 1 )
 
   # step 4: compute squared reweighted distances and test using Beta or F
