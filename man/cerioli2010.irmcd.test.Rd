@@ -91,9 +91,6 @@ Journal of the American Statistical Association, 105(489):147-156, 2010.
 Andrea Cerioli, Marco Riani, and Anthony C. Atkinson. Controlling the size of multivariate
 outlier tests with the mcd estimator of scatter. Statistical Computing, 19:341-353, 2009.
 }
-\note{
-These are draft functions; they may change once they are officially published.
-}
 \seealso{
   \code{\link{cerioli2010.fsrmcd.test}}
 }

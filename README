@@ -1,4 +1,4 @@
 This package provides the iterated RMCD method of Cerioli (2010)
 for multivariate outlier detection via robust Mahalanobis distances. It also
 provides the finite-sample RMCD method discussed in the paper, as well as 
-the methods provided in Hardin and Rocke (2005).
+the methods provided in Hardin and Rocke (2005) and Green and Martin (2014).

@@ -24,7 +24,7 @@ ch99AsymptoticDF(n.obs, p.dim, mcd.alpha)
     will be the fraction of observations that are
     omitted in computing the MCD estimate. The
     default value is 
-    \deqn{ \lfloor( (n.obs + p.dim + 1)/2 \rfloor/n.obs,} 
+    \deqn{ \lfloor (n.obs + p.dim + 1)/2 \rfloor/n.obs,} 
     which yields the maximum possible
     breakdown point for the MCD estimate.
 }
@@ -38,9 +38,9 @@ ch99AsymptoticDF(n.obs, p.dim, mcd.alpha)
 }
 \details{
   The consistency factor \code{c.alpha} is already available in the
-  \code{robustbase} library as the private function 
-  \code{MCDcons}. (See the code for \code{covMcd}.) \code{ch99AsymptoticDF}
-  uses the result of \code{MCDcons} for consistency.
+  \code{robustbase} library as the function 
+  \code{.MCDcons}. (See the code for \code{covMcd}.) \code{ch99AsymptoticDF}
+  uses the result of \code{.MCDcons} for consistency.
 
   The computation of the Wishart degrees of freedom parameter \code{m}
   follows the Appendix of Hardin and Rocke (2005).

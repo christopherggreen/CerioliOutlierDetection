@@ -36,8 +36,9 @@ cerioli2010.fsrmcd.test(datamat,
 	(e.g., 0.05). Equivalently, significance level at which 
 	to test observations for outlyingness. To test the
 	intersection hypothesis of no outliers in the data,
-	specify \eqn{\alpha = 1 - (1 - \gamma)^(1/n)}, where
-	\eqn{\gamma} is the nominal size of the test and 
+	specify 
+	\eqn{\alpha = 1 - (1 - \gamma)^{(1/n)}}{\alpha = 1 - (1 - \gamma)^(1/n)}, 
+	where \eqn{\gamma} is the nominal size of the test and 
 	\eqn{n} is the number of observations.
   }
   \item{nsamp}{ (Integer)
@@ -94,9 +95,6 @@ Journal of the American Statistical Association, 105(489):147-156, 2010.
 
 Andrea Cerioli, Marco Riani, and Anthony C. Atkinson. Controlling the size of multivariate
 outlier tests with the mcd estimator of scatter. Statistical Computing, 19:341-353, 2009.
-}
-\note{
-These are draft functions; they may change once they are officially published.
 }
 \seealso{
   \code{\link{cerioli2010.irmcd.test}}

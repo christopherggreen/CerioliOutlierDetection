@@ -35,7 +35,7 @@ hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "GM14"))
   upon the standard \eqn{\chi^2} distribution for identifying outlying
   points in data set. The method of Hardin and Rocke was designed to work
   for the maximum breakdown point case of the MCD, where 
-  \deqn{\alpha = \lfloor( (n+p+1)/2 )\rfloor/n.obs.}
+  \deqn{\alpha = \lfloor (n.obs + p.dim + 1)/2 \rfloor/n.obs.}
   Green (2014) extended 
   this result to MCD(\eqn{\alpha}), where \eqn{\alpha} controls the
   breakdown point of the estimator.
@@ -46,7 +46,8 @@ hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "GM14"))
   point case; an error will be generated for other values of \code{mcd.alpha}.
 
   The argument \code{method = "GM14"} uses the extended methodology 
-  described in Green and Martin (2014).
+  described in Green and Martin (2014) and is available for all values
+  of \code{mcd.alpha}.
 }
 \value{ Returns the adjusted F degrees of freedom based on the
   asymptotic value, the dimension of the data, and the sample size.

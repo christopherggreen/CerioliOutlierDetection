@@ -27,7 +27,7 @@ hr05CriticalValue(em, p.dim, signif.alpha)
   distance calculation was adjusted by the consistency factor, so it is not 
   included in the calculation here. (If one needs the consistency factor it
   is returned by the function \code{\link{ch99AsymptoticDF}} in this package
-  or by the private function \code{MCDcons} in the \code{robustbase} 
+  or by the function \code{.MCDcons} in the \code{robustbase} 
   package.)
 }
 \value{ The appropriate cutoff value (from the \eqn{F} 

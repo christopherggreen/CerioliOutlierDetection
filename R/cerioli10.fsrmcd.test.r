@@ -20,14 +20,22 @@ function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v),
   # estimate using the constants defined in Cerioli (2010)
 
   h <- robustbase::h.alpha.n(mcd.alpha,n,v) # size of subsamples
-  #mcd.out   <- robustbase::covMcd(datamat, alpha=mcd.alpha)
+  mcd.out   <- robustbase::covMcd(datamat, alpha=mcd.alpha)
   # cut down to just fast mcd call, only need a few things here
-  mcd.out   <- robustbase:::.fastmcd(datamat, h, nsamp, nmini, trace=as.integer(trace))
+  # 2014-07-31 reverting back to covMcd---private functions not allowed 
+  # on CRAN
+  #mcd.out   <- robustbase:::.fastmcd(datamat, h, nsamp, nmini, trace=as.integer(trace))
+
+  # 2011-10-09 should handle exact fit scenario more gracefully
+  #if ( mcd.out$exactfit > 1 ) stop("Exact fit detected in .fastmcd.")
+  # covMcd will print a warning message with the details of the singularity
+  # we don't need to repeat it---just throw an error.
+  if ( is.list(mcd.out$singularity) )
+    stop(strwrap("Singularity detected by covMcd. See the warning message from covMcd()."))
+
+  # 2011-07-17 move this calculation to the internal robustbase functions
   #ss        <- robustbase:::MCDcnp2(v, n, mcd.alpha)#mcd.out$raw.cnp[2]#@raw.cnp2[2]
   #k <- (h * ss)/(n * pchisq( qchisq(h/n,df=v), df=v+2 ))
-  # 2011-07-17 move this calculation to the internal robustbase functions
-  # 2011-10-09 should handle exact fit scenario more gracefully
-  if ( mcd.out$exactfit > 1 ) stop("Exact fit detected in .fastmcd.")
   #ca        <- robustbase:::MCDcons(v, mcd.alpha) 
   #k         <- ca * robustbase:::MCDcnp2(v, n, mcd.alpha)
   # 2014-07-28 change to exported versions in robustbase 0.91-1
