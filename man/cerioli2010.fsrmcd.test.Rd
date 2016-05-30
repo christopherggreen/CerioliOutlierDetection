@@ -38,7 +38,7 @@ cerioli2010.fsrmcd.test(datamat,
 	intersection hypothesis of no outliers in the data,
 	specify 
 	\eqn{\alpha = 1 - (1 - \gamma)^{(1/n)}}{\alpha = 1 - (1 - \gamma)^(1/n)}, 
-	where \eqn{\gamma} is the nominal size of the test and 
+	where \eqn{\gamma} is the nominal size of the intersection test and 
 	\eqn{n} is the number of observations.
   }
   \item{nsamp}{ (Integer)

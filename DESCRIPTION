@@ -1,8 +1,8 @@
 Package: CerioliOutlierDetection
 Type: Package
 Title: Outlier Detection Using the Iterated RMCD Method of Cerioli (2010) 
-Version: 1.0.9
-Date: 2015-01-11
+Version: 1.1.0
+Date: 2016-05-30
 Authors@R: c(person(c("Christopher","G."),"Green",role=c("aut","cre"),
 	email = "christopher.g.green@gmail.com"),
 	person(c("R.","Doug"),"Martin",role="ths"))

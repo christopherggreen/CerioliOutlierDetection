@@ -6,8 +6,12 @@ cerioli2010.irmcd.test <-
 # Author: Christopher G. Green
 # Date: 2011-06-23
 #
+# Update 2016-05-27
+# changing argument from signif.alpha to signif.gamma
+# to make it more clear what the parameterization is
+#
 function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v), 
-  signif.alpha=0.05, nsamp = 500, nmini = 300, trace=FALSE ) 
+  signif.gamma=0.05, nsamp = 500, nmini = 300, trace=FALSE ) 
 {
 
   datamat <- as.matrix(datamat)
@@ -17,16 +21,18 @@ function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v),
   v <- ncol(datamat) # dimension
 
   # steps 1-4: compute the FSRMCD of Cerioli (2010) 
+  # compute alpha needed to ensure Type I error rate
+  # of signif.gamma for the intersection test
+  alpha.ind    <- 1. - ((1. - signif.gamma)^(1./n))
   fsout    <- cerioli2010.fsrmcd.test( datamat, mcd.alpha=mcd.alpha, 
-    signif.alpha=signif.alpha, nsamp=nsamp, nmini=nmini, trace=trace )
+    signif.alpha=alpha.ind, nsamp=nsamp, nmini=nmini, trace=trace )
   # test whether any point is an outlier
-  n.sigalf <- length(signif.alpha)
-  gamma    <- 1. - ((1. - signif.alpha)^(1./n))
+  n.siggam <- length(signif.gamma)
   outliers <- fsout$outliers
-  for ( i in 1:n.sigalf ) {
+  for ( i in 1:n.siggam ) {
     if ( any(outliers[,i]) ) {
       # test each mahalanobis distance at the gamma[i] level
-      outliers[,i] <- fsout$mahdist.rw[,i] > fsout$critvalfcn(gamma[i])
+      outliers[,i] <- fsout$mahdist.rw[,i] > fsout$critvalfcn(signif.gamma[i])
     } else {
       # accept null hypothesis: no outliers
       # don't need to do anything to outliers[,i]

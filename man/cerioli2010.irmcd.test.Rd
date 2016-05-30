@@ -14,7 +14,7 @@ Iterated RMCD test of Cerioli (2010)
 \usage{
 cerioli2010.irmcd.test(datamat, 
   mcd.alpha = max.bdp.mcd.alpha(n,v), 
-  signif.alpha = 0.05, nsamp = 500, 
+  signif.gamma = 0.05, nsamp = 500, 
   nmini = 300, trace = FALSE)
 }
 \arguments{
@@ -33,15 +33,14 @@ cerioli2010.irmcd.test(datamat,
     0.5 and 1. See the \code{\link{covMcd}} documentation 
     in the \code{robustbase} library.
   }
-  \item{signif.alpha}{ (Numeric)
-    Desired nominal size of the outlier test (e.g., 0.05). 
-    Equivalently, significance level at which to test 
-    observations for outlyingness. Unlike 
-	\code{\link{cerioli2010.fsrmcd.test}}, this function will 
-	calculate the appropriate significance level for the
-	intersection hypothesis based on \code{signif.alpha},
-	so \code{signif.alpha} should be the desired nominal
-	size for detecting outliers.
+  \item{signif.gamma}{ (Numeric)
+    Desired nominal size of the \emph{intersection} outlier 
+	test (e.g., 0.05), i.e., a test that there are no outliers 
+	in the data. This is the \eqn{\gamma} parameter in 
+	Cerioli (2010). The corresponding \eqn{\alpha} parameter
+	for testing individual observations for outlyingness will
+	be calculated from \eqn{\gamma} as 
+	\deqn{ \alpha = 1 - ( 1 - \gamma )^{(1/n)}. }
   }
   \item{nsamp}{ (Integer)
     Number of subsamples to use in computing the MCD. see 
@@ -65,20 +64,20 @@ cerioli2010.irmcd.test(datamat,
   no outliers in the data, individual observations are then
   tested for outlyingness using the critical value function
   returned by \code{\link{cerioli2010.fsrmcd.test}} with 
-  an adjusted significance parameter.
+  significance \eqn{\gamma}.
 }
 \value{
   \item{outliers}{A matrix of dimension \code{nrow(datamat)} by 
-    \code{length(signif.alpha)} indicating 
+    \code{length(signif.gamma)} indicating 
     whether each row of \code{datamat} is an outlier. The \code{i-th} 
     column corresponds to the result of testing observations
-    for outlyingness at significance level \code{signif.alpha[i]}.}
+    for outlyingness at significance level \code{signif.gamma[i]}.}
   \item{mahdist.rw}{a matrix of dimension \code{nrow(datamat)} by
-    \code{length(signif.alpha)} of Mahalanobis distances computed
+    \code{length(signif.gamma)} of Mahalanobis distances computed
     using the finite-sample reweighted MCD methodology in
     Cerioli (2010). Even though the distances do not depend
-    on \code{signif.alpha}, there is one column per entry in 
-    \code{signif.alpha} for user convenience.
+    on \code{signif.gamma}, there is one column per entry in 
+    \code{signif.gamma} for user convenience.
   }
 }
 \author{
@@ -105,7 +104,7 @@ simdata <- array( rmvnorm(n*v, mean=rep(0,v),
     sigma = diag(rep(1,v))), c(n,v) )
 # detect outliers
 results <- cerioli2010.irmcd.test( simdata, 
-    signif.alpha=c(0.05,0.01,0.001) )
+    signif.gamma=c(0.05,0.01,0.001) )
 # count number of outliers detected for each 
 # significance level
 colSums( results$outliers )
@@ -120,7 +119,7 @@ simdata[ sample(n,10), ] <- array(
   c(10,v)
 )
 results <- cerioli2010.irmcd.test( simdata, 
-  signif.alpha=0.01 )
+  signif.gamma=0.01 )
 mean( results$outliers[,1,drop=TRUE] )
 
 
@@ -136,12 +135,12 @@ mean( results$outliers[,1,drop=TRUE] )
   # methods out there
   results <- apply( simdata, 3, function(dm) {
     z <- cerioli2010.irmcd.test( dm, 
-      signif.alpha=0.01 )
+      signif.gamma=0.01 )
     # true if outliers were detected in the data, false otherwise
     any(z$outliers[,1,drop=TRUE])
   })
   # count the percentage of samples where outliers were detected;
-  # should be close to the signif.alpha value used (0.01) in these
+  # should be close to the signif.gamma value used (0.01) in these
   # samples
   mean(results)
 }
