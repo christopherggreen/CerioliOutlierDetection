@@ -13,7 +13,8 @@
 cerioli2010.fsrmcd.test(datamat, 
   mcd.alpha = max.bdp.mcd.alpha(n,v), 
   signif.alpha = 0.05, nsamp = 500, 
-  nmini = 300, trace = FALSE)
+  nmini = 300, trace = FALSE, 
+  delta = 0.025)
 }
 \arguments{
   \item{datamat}{ (Data Frame or Matrix)
@@ -32,10 +33,10 @@ cerioli2010.fsrmcd.test(datamat,
     in the \code{robustbase} library.
   }
   \item{signif.alpha}{ (Numeric)
-    Desired nominal size of the individual outlier test 
-	(e.g., 0.05). Equivalently, significance level at which 
-	to test observations for outlyingness. To test the
-	intersection hypothesis of no outliers in the data,
+    Desired nominal size \eqn{\alpha} of the individual outlier test 
+	(default value is 0.05). Equivalently, significance level 
+	at which to test individual observations for outlyingness. 
+	To test the intersection hypothesis of no outliers in the data,
 	specify 
 	\eqn{\alpha = 1 - (1 - \gamma)^{(1/n)}}{\alpha = 1 - (1 - \gamma)^(1/n)}, 
 	where \eqn{\gamma} is the nominal size of the intersection test and 
@@ -53,7 +54,15 @@ cerioli2010.fsrmcd.test(datamat,
   \item{trace}{ (Logical)
     see \code{\link{covMcd}} documentation in the
     \code{robustbase} library.
-   }
+  }
+  \item{delta}{ (Numeric)
+  	False-positive rate to use in the reweighting 
+	step (Step 2). Defaults to 0.025 as used in
+	Cerioli (2010). When the ratio \eqn{n/\nu} of
+	sample size to dimension is very small, using
+	a smaller delta can improve the accuracy of
+	the method.
+  }
 }
 %%  ~~ \details{
 %%  ~~ If necessary, more details than the description above ~~
