@@ -11,7 +11,8 @@ cerioli2010.irmcd.test <-
 # to make it more clear what the parameterization is
 #
 function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v), 
-  signif.gamma=0.05, nsamp = 500, nmini = 300, trace=FALSE ) 
+  signif.gamma=0.05, nsamp = 500, nmini = 300, trace=FALSE,
+  hrdf.method=c("GM14","HR05")) 
 {
 
   datamat <- as.matrix(datamat)
@@ -20,12 +21,15 @@ function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v),
   n <- nrow(datamat) # number of observations
   v <- ncol(datamat) # dimension
 
+  hrdf.method <- match.arg(hrdf.method)
+
   # steps 1-4: compute the FSRMCD of Cerioli (2010) 
   # compute alpha needed to ensure Type I error rate
   # of signif.gamma for the intersection test
   alpha.ind    <- 1. - ((1. - signif.gamma)^(1./n))
   fsout    <- cerioli2010.fsrmcd.test( datamat, mcd.alpha=mcd.alpha, 
-    signif.alpha=alpha.ind, nsamp=nsamp, nmini=nmini, trace=trace )
+    signif.alpha=alpha.ind, nsamp=nsamp, nmini=nmini, trace=trace,
+    hrdf.method=hrdf.method)
   # test whether any point is an outlier
   n.siggam <- length(signif.gamma)
   outliers <- fsout$outliers

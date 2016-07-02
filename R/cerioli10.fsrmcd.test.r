@@ -8,7 +8,7 @@ cerioli2010.fsrmcd.test <-
 #
 function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v), 
   signif.alpha=0.05, nsamp = 500, nmini = 300, trace=FALSE,
-  delta = 0.025
+  delta = 0.025, hrdf.method=c("GM14","HR05")
   ) 
 {
 
@@ -17,6 +17,8 @@ function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v),
     stop("datamat cannot have missing values.")
   n <- nrow(datamat) # number of observations
   v <- ncol(datamat) # dimension
+
+  hrdf.method <- match.arg( hrdf.method )
 
   # step 1: compute h, compute MCD location/dispersion
   # estimate using the constants defined in Cerioli (2010)
@@ -57,7 +59,8 @@ function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v),
   # and delta = 0.025.
   mahdist  <- mahalanobis( datamat, center=mu.hat, cov=sigma.hat )
   n.sigalf <- length(signif.alpha)
-  hr05     <- hr05CutoffMvnormal( n, v, mcd.alpha, delta )
+  hr05     <- hr05CutoffMvnormal( n, v, mcd.alpha, delta, 
+    method=hrdf.method )
 
   dfz      <- hr05$m.pred - v + 1
   DD       <- withCallingHandlers(

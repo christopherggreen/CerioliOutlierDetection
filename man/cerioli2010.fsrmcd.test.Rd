@@ -14,7 +14,7 @@ cerioli2010.fsrmcd.test(datamat,
   mcd.alpha = max.bdp.mcd.alpha(n,v), 
   signif.alpha = 0.05, nsamp = 500, 
   nmini = 300, trace = FALSE, 
-  delta = 0.025)
+  delta = 0.025, hrdf.method=c("GM14","HR05"))
 }
 \arguments{
   \item{datamat}{ (Data Frame or Matrix)
@@ -63,6 +63,15 @@ cerioli2010.fsrmcd.test(datamat,
 	a smaller delta can improve the accuracy of
 	the method.
   }
+  \item{hrdf.method}{ (String)
+    Method to use for computing degrees of freedom
+	and cutoff values for the non-MCD subset. The
+	original method of Hardin and Rocke (2005) and
+	the expanded method of Green and Martin (2014)
+	are available as the options ``HR05'' and ``GM14'',
+	respectively. ``GM14'' is the default, as it 
+	is more accurate across a wider range of \code{mcd.alpha}
+	values.}
 }
 %%  ~~ \details{
 %%  ~~ If necessary, more details than the description above ~~

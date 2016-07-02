@@ -15,7 +15,7 @@ Iterated RMCD test of Cerioli (2010)
 cerioli2010.irmcd.test(datamat, 
   mcd.alpha = max.bdp.mcd.alpha(n,v), 
   signif.gamma = 0.05, nsamp = 500, 
-  nmini = 300, trace = FALSE)
+  nmini = 300, trace = FALSE, hrdf.method=c("GM14","HR05"))
 }
 \arguments{
   \item{datamat}{ (Data Frame or Matrix)
@@ -35,12 +35,12 @@ cerioli2010.irmcd.test(datamat,
   }
   \item{signif.gamma}{ (Numeric)
     Desired nominal size of the \emph{intersection} outlier 
-	test (e.g., 0.05), i.e., a test that there are no outliers 
-	in the data. This is the \eqn{\gamma} parameter in 
-	Cerioli (2010). The corresponding \eqn{\alpha} parameter
-	for testing individual observations for outlyingness will
-	be calculated from \eqn{\gamma} as 
-	\deqn{ \alpha = 1 - ( 1 - \gamma )^{(1/n)}. }
+    test (e.g., 0.05), i.e., a test that there are no outliers 
+    in the data. This is the \eqn{\gamma} parameter in 
+    Cerioli (2010). The corresponding \eqn{\alpha} parameter
+    for testing individual observations for outlyingness will
+    be calculated from \eqn{\gamma} as 
+  \deqn{ \alpha = 1 - ( 1 - \gamma )^{(1/n)}. }
   }
   \item{nsamp}{ (Integer)
     Number of subsamples to use in computing the MCD. see 
@@ -55,6 +55,16 @@ cerioli2010.irmcd.test(datamat,
     see \code{\link{covMcd}} documentation in the
     \code{robustbase} library.
    }
+  \item{hrdf.method}{ (String)
+    Method to use for computing degrees of freedom
+    and cutoff values for the non-MCD subset. The
+    original method of Hardin and Rocke (2005) and
+    the expanded method of Green and Martin (2014)
+    are available as the options ``HR05'' and ``GM14'',
+    respectively. ``GM14'' is the default, as it 
+    is more accurate across a wider range of \code{mcd.alpha}
+    values.
+  }
 }
 \details{
   Calls the finite-sample reweighted MCD (FSRMCD) outlier 
