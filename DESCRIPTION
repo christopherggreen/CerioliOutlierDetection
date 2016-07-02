@@ -1,8 +1,8 @@
 Package: CerioliOutlierDetection
 Type: Package
 Title: Outlier Detection Using the Iterated RMCD Method of Cerioli (2010) 
-Version: 1.1.2
-Date: 2016-07-01
+Version: 1.1.3
+Date: 2016-07-02
 Authors@R: c(person(c("Christopher","G."),"Green",role=c("aut","cre"),
 	email = "christopher.g.green@gmail.com"),
 	person(c("R.","Doug"),"Martin",role="ths"))
@@ -14,5 +14,5 @@ Description: Implements the iterated RMCD method of Cerioli (2010)
 	provides the finite-sample RMCD method discussed in the paper, as well as 
 	the methods provided in Hardin and Rocke (2005) and Green and Martin (2014).
 License: GPL (>= 2)
-Suggests: rrcov, robust, mvtnorm
+Suggests: rrcov, robust, mvtnorm, alr3
 URL: http://christopherggreen.github.io/CerioliOutlierDetection/ 
