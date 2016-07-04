@@ -95,7 +95,10 @@ cerioli2010.fsrmcd.test(datamat,
   }
   \item{critvalfcn}{Function to compute critical values for Mahalanobis distances
     based on the reweighted MCD; see Equations (18) and (19) in Cerioli (2010). The
-    function takes a signifance level as its only argument.} 
+    function takes a signifance level as its only argument, and provides a critical
+    value for each of the original observations (though there will only be two
+    unique values, one for points included in the reweighted MCD (\code{weights == 1})
+    and one for points excluded from the reweighted MCD (\code{weights == 0}).} 
   \item{signif.alpha}{Significance levels used in testing.} 
   \item{mcd.alpha}{Fraction of the observations used to compute the MCD estimate} 
   \item{outliers}{A matrix of dimension \code{nrow(datamat)} by 
