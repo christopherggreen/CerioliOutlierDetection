@@ -17,7 +17,7 @@ developed by Hardin and Rocke (2005) and Green and Martin (2014).
   \tabular{ll}{
     Package: \tab CerioliOutlierDetection\cr
     Type: \tab Package\cr
-    Version: \tab 1.0.8\cr
+    Version: \tab 1.1.5\cr
   }
 
   The function \code{cerioli2010.irmcd.test()} provides the outlier detection 
@@ -25,7 +25,10 @@ developed by Hardin and Rocke (2005) and Green and Martin (2014).
   of this package to start. See the documentation for that function for examples.
 
   This package was also used to produce the results presented in Green and 
-  Martin (2014).
+  Martin (2014). There is a companion \code{R} package, \code{HardinRockeExtension},
+  that provides code that can be used to replicate the results of that paper. The
+  package \code{HardinRockeExtension} is available from Christopher G. Green's 
+  GitHub: \url{https://github.com/christopherggreen/HardinRockeExtension} .
 }
 \author{
 Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>,
