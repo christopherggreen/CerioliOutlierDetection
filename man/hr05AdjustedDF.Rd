@@ -4,7 +4,7 @@
 \concept{Outliers}
 \title{Adjusted Degrees of Freedom for Testing Robust Mahalanobis Distances for Outlyingness}
 \description{
-  Computes the adjusted F degrees of freedom for testing
+  Computes the degrees of freedom for the adjusted F distribution for testing
   Mahalanobis distances calculated with the minimum covariance 
   determinant (MCD) robust dispersion estimate (for data with 
   a model normal distribution) as described in Hardin and 
@@ -29,19 +29,20 @@ hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "GM14"))
     or "GM14" to use the method of Green and Martin (2014).}
 }
 \details{
-  Hardin and Rocke (2005) computed an approximate \eqn{F} distribution
+  Hardin and Rocke (2005) derived an approximate \eqn{F} distribution
   for testing robust Mahalanobis distances, computed using the MCD
   estimate of dispersion, for outlyingness. This distribution improves
   upon the standard \eqn{\chi^2} distribution for identifying outlying
   points in data set. The method of Hardin and Rocke was designed to work
   for the maximum breakdown point case of the MCD, where 
-  \deqn{\alpha = \lfloor (n.obs + p.dim + 1)/2 \rfloor/n.obs.}
-  Green (2014) extended 
+  \deqn{\alpha = \lfloor (n.obs + p.dim + 1)/2 \rfloor/n.obs.}{alpha = \lfloor (n.obs + p.dim + 1)/2 \rfloor/n.obs.}
+  Green and Martin (2014) extended 
   this result to MCD(\eqn{\alpha}), where \eqn{\alpha} controls the
+  size of the sample used to compute the MCD estimate, as well as the
   breakdown point of the estimator.
 
   With argument \code{method = "HR05"} the function returns 
-  \eqn{m_{pred}} as given in Equation 3.4 of Hardin and Rocke (2005).
+  \eqn{m_{pred}}{m_pred} as given in Equation 3.4 of Hardin and Rocke (2005).
   The Hardin and Rocke method is only supported for the maximum breakdown
   point case; an error will be generated for other values of \code{mcd.alpha}.
 

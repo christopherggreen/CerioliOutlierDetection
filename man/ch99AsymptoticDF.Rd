@@ -20,13 +20,13 @@ ch99AsymptoticDF(n.obs, p.dim, mcd.alpha)
     number of variables. }
   \item{mcd.alpha}{ (Numeric) Value that  
     determines the fraction of the sample used to 
-    compute the MCD estimate. \eqn{1 - mcd.alpha}
+    compute the MCD estimate. \eqn{1 - mcd.alpha}{1 - mcd.alpha}
     will be the fraction of observations that are
     omitted in computing the MCD estimate. The
     default value is 
-    \deqn{ \lfloor (n.obs + p.dim + 1)/2 \rfloor/n.obs,} 
-    which yields the maximum possible
-    breakdown point for the MCD estimate.
+    \deqn{ \lfloor (n.obs + p.dim + 1)/2 \rfloor/n.obs,}{\lfloor (n.obs + p.dim + 1)/2 \rfloor/n.obs,}  
+    which yields the MCD estimate with the maximum possible
+    breakdown point.
 }
 }
 \value{
@@ -42,7 +42,7 @@ ch99AsymptoticDF(n.obs, p.dim, mcd.alpha)
   \code{.MCDcons}. (See the code for \code{covMcd}.) \code{ch99AsymptoticDF}
   uses the result of \code{.MCDcons} for consistency.
 
-  The computation of the Wishart degrees of freedom parameter \code{m}
+  The computation of the asymptotic Wishart degrees of freedom parameter \code{m}
   follows the Appendix of Hardin and Rocke (2005).
 }
 \author{

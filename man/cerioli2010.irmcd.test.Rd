@@ -9,13 +9,15 @@ Iterated RMCD test of Cerioli (2010)
   points. Outlier testing/identification is done using the
   Mahalanobis-distances based on the MCD dispersion estimate. 
   The iterated reweighted MCD method of Cerioli (2010) is used 
-  to ensure the test has the specified size.
+  to ensure the intersection test has the specified nominal size (Type I
+  error rate).
 }
 \usage{
 cerioli2010.irmcd.test(datamat, 
   mcd.alpha = max.bdp.mcd.alpha(n,v), 
   signif.gamma = 0.05, nsamp = 500, 
-  nmini = 300, trace = FALSE, hrdf.method=c("GM14","HR05"))
+  nmini = 300, trace = FALSE, 
+  delta = 0.025, hrdf.method=c("GM14","HR05"))
 }
 \arguments{
   \item{datamat}{ (Data Frame or Matrix)
@@ -27,43 +29,52 @@ cerioli2010.irmcd.test(datamat,
   }
   \item{mcd.alpha}{ (Numeric)
     Value to control the fraction
-    of observations used to compute the determinant.
+    of observations used to compute the covariance matrices
+    in the MCD calculation.
     Default value is corresponds to the maximum breakpoint
     case of the MCD; valid values are between
     0.5 and 1. See the \code{\link{covMcd}} documentation 
-    in the \code{robustbase} library.
+    in the \code{robustbase} library for further details.
   }
   \item{signif.gamma}{ (Numeric)
     Desired nominal size of the \emph{intersection} outlier 
     test (e.g., 0.05), i.e., a test that there are no outliers 
-    in the data. This is the \eqn{\gamma} parameter in 
-    Cerioli (2010). The corresponding \eqn{\alpha} parameter
+    in the data. (This is the \eqn{\gamma} parameter in 
+    Cerioli (2010).) The corresponding \eqn{\alpha} parameter
     for testing individual observations for outlyingness will
     be calculated from \eqn{\gamma} as 
-  \deqn{ \alpha = 1 - ( 1 - \gamma )^{(1/n)}. }
+  \deqn{ \alpha = 1 - ( 1 - \gamma )^{(1/n)}. }{ alpha = 1 - (1 - gamma)^(1/n). }
   }
   \item{nsamp}{ (Integer)
-    Number of subsamples to use in computing the MCD. see 
+    Number of subsamples to use in computing the MCD. See the
     \code{\link{covMcd}} documentation in the
     \code{robustbase} library.
   }
   \item{nmini}{ (Integer)
-    see \code{\link{covMcd}} documentation in the
+    See the \code{\link{covMcd}} documentation in the
     \code{robustbase} library.
   }
   \item{trace}{ (Logical)
-    see \code{\link{covMcd}} documentation in the
+    See the \code{\link{covMcd}} documentation in the
     \code{robustbase} library.
    }
+  \item{delta}{ (Numeric)
+    False-positive rate to use in the reweighting 
+  step (Step 2). Defaults to 0.025 as used in
+  Cerioli (2010). When the ratio \eqn{n/\nu} of
+  sample size to dimension is very small, using
+  a smaller delta can improve the accuracy of
+  the method.
+  }
   \item{hrdf.method}{ (String)
     Method to use for computing degrees of freedom
-    and cutoff values for the non-MCD subset. The
-    original method of Hardin and Rocke (2005) and
-    the expanded method of Green and Martin (2014)
-    are available as the options ``HR05'' and ``GM14'',
-    respectively. ``GM14'' is the default, as it 
-    is more accurate across a wider range of \code{mcd.alpha}
-    values.
+  and cutoff values for the non-MCD subset. The
+  original method of Hardin and Rocke (2005) and
+  the expanded method of Green and Martin (2014)
+  are available as the options ``HR05'' and ``GM14'',
+  respectively. ``GM14'' is the default, as it 
+  is more accurate across a wider range of \code{mcd.alpha}
+  values.
   }
 }
 \details{
@@ -98,7 +109,7 @@ Andrea Cerioli. Multivariate outlier detection with high-breakdown estimators.
 Journal of the American Statistical Association, 105(489):147-156, 2010.
 
 Andrea Cerioli, Marco Riani, and Anthony C. Atkinson. Controlling the size of multivariate
-outlier tests with the mcd estimator of scatter. Statistical Computing, 19:341-353, 2009.
+outlier tests with the MCD estimator of scatter. Statistical Computing, 19:341-353, 2009.
 }
 \seealso{
   \code{\link{cerioli2010.fsrmcd.test}}
@@ -154,17 +165,17 @@ mean( results$outliers[,1,drop=TRUE] )
   bnk.v <- ncol( banknote.real ) 
   bnk.alpha <- 1. - ((1. - bnk.gamma)^(1./bnk.m))
   cutoff.cls <- (bnk.m-1.)*(bnk.m-1.)*qbeta( 1. - bnk.alpha, bnk.v/2., 
-	(bnk.m - bnk.v - 1.)/2.)/bnk.m
+  (bnk.m - bnk.v - 1.)/2.)/bnk.m
   # Figure 4 (left) in Cerioli (2010)
   plot( getDistance( cov.cls ), xlab="Index number", 
-	ylab="Squared Mahalanobis Distance", type="p", 
-	ylim=c(0,45)
+  ylab="Squared Mahalanobis Distance", type="p", 
+  ylim=c(0,45)
   )
   abline( h=cutoff.cls )
 
   # reweighted MCD, maximum breakdown point case
   cov.rob <- CovMcd( banknote.real, 
-	alpha=floor((bnk.m + bnk.v + 1.)/2.)/bnk.m, nsamp="best" )
+  alpha=floor((bnk.m + bnk.v + 1.)/2.)/bnk.m, nsamp="best" )
   # cutoff using chi-squared individually
   cutoff.rmcdind <- qchisq(1. - bnk.gamma, df=bnk.v)
   # cufoff using simultaneous chi-square
@@ -173,12 +184,12 @@ mean( results$outliers[,1,drop=TRUE] )
   # cutoff value is returned by critvalfcn for observations
   # with weight=0
   tmp.fsrmcd <- cerioli2010.fsrmcd.test( banknote.real, 
-	signif.alpha=bnk.alpha )
+  signif.alpha=bnk.alpha )
   cutoff.fsrmcd <- unique(tmp.fsrmcd$critvalfcn( bnk.alpha )[tmp.fsrmcd$weights==0])
   # Figure 4 (right)
   plot( getDistance( cov.rob ), xlab="Index number",
-	ylab="Squared Robust Reweighted Distance", type="p",
-	ylim=c(0,45)
+  ylab="Squared Robust Reweighted Distance", type="p",
+  ylim=c(0,45)
   )
   abline( h=cutoff.rmcdind, lty="dotted" )
   abline( h=cutoff.rmcdsim, lty="dashed" )
@@ -196,42 +207,42 @@ mean( results$outliers[,1,drop=TRUE] )
   bnk.v <- ncol( banknote.fake ) 
   bnk.alpha <- 1. - ((1. - bnk.gamma)^(1./bnk.m))
   cutoff.cls <- (bnk.m-1.)*(bnk.m-1.)*qbeta( 1. - bnk.alpha, bnk.v/2., 
-  	(bnk.m - bnk.v - 1.)/2.)/bnk.m
+    (bnk.m - bnk.v - 1.)/2.)/bnk.m
   # Figure 5 (left) in Cerioli (2010)
   plot( getDistance( cov.cls ), xlab="Index number", 
-  	ylab="Squared Mahalanobis Distance", type="p", 
-  	ylim=c(0,45)
+    ylab="Squared Mahalanobis Distance", type="p", 
+    ylim=c(0,45)
   )
   abline( h=cutoff.cls )
   
   
   # reweighted MCD, maximum breakdown point case
   cov.rob <- CovMcd( banknote.fake, 
-  	alpha=floor((bnk.m + bnk.v + 1.)/2.)/bnk.m, nsamp="best" )
+    alpha=floor((bnk.m + bnk.v + 1.)/2.)/bnk.m, nsamp="best" )
   # cutoff using chi-squared individually
   cutoff.rmcdind <- qchisq(1. - bnk.gamma, df=bnk.v)
   # scaled-F cutoff using FSRMCD
   # cutoff value is returned by critvalfcn for observations
   # with weight=0
   tmp.fsrmcd <- cerioli2010.fsrmcd.test( banknote.fake, 
-  	signif.alpha=bnk.alpha )
+    signif.alpha=bnk.alpha )
   cutoff.fsrmcd <- unique(tmp.fsrmcd$critvalfcn( bnk.alpha )[tmp.fsrmcd$weights==0])
   cutoff.irmcd <- unique(tmp.fsrmcd$critvalfcn( bnk.gamma )[tmp.fsrmcd$weights==0])
   # Figure 5 (right) in Cerioli (2010)
   plot( getDistance( cov.rob ), xlab="Index number",
-  	ylab="Squared robust reweighted Distance", type="p",
-  	ylim=c(0,150)
+    ylab="Squared robust reweighted Distance", type="p",
+    ylim=c(0,150)
   )
   abline( h=cutoff.rmcdind, lty="dotted" )
   abline( h=cutoff.fsrmcd, lty="dashed" )
   abline( h=cutoff.irmcd, lty="solid" )
   legend( "topright", c("RMCD_ind","FSRMCD","IRMCD"), 
-  	lty=c("dotted","dashed","solid") )
+    lty=c("dotted","dashed","solid") )
 
 }
 
 #############################################
-# example of how to ensure the size of the test is correct
+# example of how to ensure the size of the intersection test is correct
 \dontrun{
   n.sim <- 5000
   simdata <- array( 
@@ -247,8 +258,8 @@ mean( results$outliers[,1,drop=TRUE] )
     any(z$outliers[,1,drop=TRUE])
   })
   # count the percentage of samples where outliers were detected;
-  # should be close to the signif.gamma value used (0.01) in these
-  # samples
+  # should be close to the significance level value used (0.01) in these
+  # samples for the intersection test
   mean(results)
 }
 }

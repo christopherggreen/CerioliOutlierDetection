@@ -1,4 +1,5 @@
 import(robustbase)
+importFrom("stats", "mahalanobis", "pchisq", "qbeta", "qchisq", "qf")
 export(
 	ch99AsymptoticDF,	
 	hr05AdjustedDF,

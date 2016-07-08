@@ -7,7 +7,8 @@
   points. Outlier testing/identification is done using the
   Mahalanobis-distances based on the MCD dispersion estimate. 
   The finite-sample reweighted MCD method of Cerioli (2010) is used 
-  to test for unusually large distances.
+  to test for unusually large distances, which indicate possible
+  outliers.
 }
 \usage{
 cerioli2010.fsrmcd.test(datamat, 
@@ -26,52 +27,55 @@ cerioli2010.fsrmcd.test(datamat,
   }
   \item{mcd.alpha}{ (Numeric)
     Value to control the fraction
-    of observations used to compute the determinant.
+    of observations used to compute the covariance matrices
+  in the MCD calculation.
     Default value is corresponds to the maximum breakpoint
     case of the MCD; valid values are between
     0.5 and 1. See the \code{\link{covMcd}} documentation 
-    in the \code{robustbase} library.
+    in the \code{robustbase} library for further details.
   }
   \item{signif.alpha}{ (Numeric)
-    Desired nominal size \eqn{\alpha} of the individual outlier test 
-	(default value is 0.05). Equivalently, significance level 
-	at which to test individual observations for outlyingness. 
-	To test the intersection hypothesis of no outliers in the data,
-	specify 
-	\eqn{\alpha = 1 - (1 - \gamma)^{(1/n)}}{\alpha = 1 - (1 - \gamma)^(1/n)}, 
-	where \eqn{\gamma} is the nominal size of the intersection test and 
-	\eqn{n} is the number of observations.
+    Desired nominal size \eqn{\alpha} of the \emph{individual} outlier test 
+  (default value is 0.05). Equivalently, significance level 
+  at which to test individual observations for outlyingness. (This is
+  the \eqn{\alpha} parameter in Cerioli (2010).)
+  To test the intersection hypothesis of no outliers in the data,
+  specify 
+  \deqn{\alpha = 1 - (1 - \gamma)^{(1/n)},}{alpha = 1 - (1 - gamma)^(1/n),} 
+  where \eqn{\gamma} is the nominal size of the intersection test and 
+  \eqn{n} is the number of observations.
   }
   \item{nsamp}{ (Integer)
-    Number of subsamples to use in computing the MCD. see 
+    Number of subsamples to use in computing the MCD. See the
     \code{\link{covMcd}} documentation in the
     \code{robustbase} library.
   }
   \item{nmini}{ (Integer)
-    see \code{\link{covMcd}} documentation in the
+    See the \code{\link{covMcd}} documentation in the
     \code{robustbase} library.
   }
   \item{trace}{ (Logical)
-    see \code{\link{covMcd}} documentation in the
+    See the \code{\link{covMcd}} documentation in the
     \code{robustbase} library.
   }
   \item{delta}{ (Numeric)
-  	False-positive rate to use in the reweighting 
-	step (Step 2). Defaults to 0.025 as used in
-	Cerioli (2010). When the ratio \eqn{n/\nu} of
-	sample size to dimension is very small, using
-	a smaller delta can improve the accuracy of
-	the method.
+    False-positive rate to use in the reweighting 
+  step (Step 2). Defaults to 0.025 as used in
+  Cerioli (2010). When the ratio \eqn{n/\nu} of
+  sample size to dimension is very small, using
+  a smaller delta can improve the accuracy of
+  the method.
   }
   \item{hrdf.method}{ (String)
     Method to use for computing degrees of freedom
-	and cutoff values for the non-MCD subset. The
-	original method of Hardin and Rocke (2005) and
-	the expanded method of Green and Martin (2014)
-	are available as the options ``HR05'' and ``GM14'',
-	respectively. ``GM14'' is the default, as it 
-	is more accurate across a wider range of \code{mcd.alpha}
-	values.}
+  and cutoff values for the non-MCD subset. The
+  original method of Hardin and Rocke (2005) and
+  the expanded method of Green and Martin (2014)
+  are available as the options ``HR05'' and ``GM14'',
+  respectively. ``GM14'' is the default, as it 
+  is more accurate across a wider range of \code{mcd.alpha}
+  values.
+  }
 }
 %%  ~~ \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -80,7 +84,7 @@ cerioli2010.fsrmcd.test(datamat,
   \item{mu.hat}{Location estimate from the MCD calculation}
   \item{sigma.hat}{Dispersion estimate from the MCD calculation}
   \item{mahdist}{Mahalanobis distances calculated using the MCD estimate} 
-  \item{DD}{Hardin-Rocke critical values for testing MCD distances. Used
+  \item{DD}{Hardin-Rocke or Green-Martin critical values for testing MCD distances. Used
     to produce weights for reweighted MCD. See Equation (16) in Cerioli (2010).}
   \item{weights}{Weights used in the reweighted MCD. See Equation (16) in Cerioli
     (2010).} 
@@ -98,7 +102,7 @@ cerioli2010.fsrmcd.test(datamat,
     function takes a signifance level as its only argument, and provides a critical
     value for each of the original observations (though there will only be two
     unique values, one for points included in the reweighted MCD (\code{weights == 1})
-    and one for points excluded from the reweighted MCD (\code{weights == 0}).} 
+    and one for points excluded from the reweighted MCD (\code{weights == 0})).} 
   \item{signif.alpha}{Significance levels used in testing.} 
   \item{mcd.alpha}{Fraction of the observations used to compute the MCD estimate} 
   \item{outliers}{A matrix of dimension \code{nrow(datamat)} by 
@@ -115,7 +119,7 @@ Andrea Cerioli. Multivariate outlier detection with high-breakdown estimators.
 Journal of the American Statistical Association, 105(489):147-156, 2010.
 
 Andrea Cerioli, Marco Riani, and Anthony C. Atkinson. Controlling the size of multivariate
-outlier tests with the mcd estimator of scatter. Statistical Computing, 19:341-353, 2009.
+outlier tests with the MCD estimator of scatter. Statistical Computing, 19:341-353, 2009.
 }
 \seealso{
   \code{\link{cerioli2010.irmcd.test}}
@@ -157,7 +161,7 @@ colMeans( results$outliers )
 
 \dontrun{
 #############################################
-# example of how to ensure the size of the test is correct
+# example of how to ensure the size of the intersection test is correct
 
   n.sim <- 5000
   simdata <- array( 
@@ -174,8 +178,8 @@ colMeans( results$outliers )
     any(z$outliers[,1,drop=TRUE])
   })
   # count the percentage of samples where outliers were detected;
-  # should be close to the signif.alpha value used (0.01) in these
-  # samples
+  # should be close to the significance level value used (0.01) in these
+  # samples for the intersection test.
   mean(results)
 
 }

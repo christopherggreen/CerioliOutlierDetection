@@ -12,7 +12,7 @@ cerioli2010.irmcd.test <-
 #
 function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v), 
   signif.gamma=0.05, nsamp = 500, nmini = 300, trace=FALSE,
-  hrdf.method=c("GM14","HR05")) 
+  delta = 0.025, hrdf.method=c("GM14","HR05")) 
 {
 
   datamat <- as.matrix(datamat)
@@ -29,7 +29,7 @@ function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v),
   alpha.ind    <- 1. - ((1. - signif.gamma)^(1./n))
   fsout    <- cerioli2010.fsrmcd.test( datamat, mcd.alpha=mcd.alpha, 
     signif.alpha=alpha.ind, nsamp=nsamp, nmini=nmini, trace=trace,
-    hrdf.method=hrdf.method)
+	delta=delta, hrdf.method=hrdf.method)
   # test whether any point is an outlier
   n.siggam <- length(signif.gamma)
   outliers <- fsout$outliers
