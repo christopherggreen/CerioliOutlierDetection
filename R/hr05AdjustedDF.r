@@ -18,12 +18,14 @@ function( n.obs, p.dim,
   retval <- numeric(0)
 
   retval <- if ( method == "HR05" ) {
-    if ( mcd.alpha == max.bdp.mcd.alpha(n.obs, p.dim) ) {
-      # original equation from Hardin and Rocke 2005
-      hr05.predict.050.hr05(m.asy,p.dim,n.obs)
-    } else {
-      stop("HR05 unsupported for alpha other than maximum breakdown case.")
+    # 2017-03-13 changed this from error to warning---user
+	# can use the HR05 method for non-MBP fractions if they want
+	# but we'll complain about it.
+    if ( mcd.alpha != max.bdp.mcd.alpha(n.obs, p.dim) ) {
+      warning("HR05 unsupported for alpha other than maximum breakdown case.")
     }
+    # original equation from Hardin and Rocke 2005
+    hr05.predict.050.hr05(m.asy,p.dim,n.obs)
   } else if ( method == "GM14" ) {
     # use fitted models to adjust asymptotic degrees of freedom to 
     # simulated values for small samples
