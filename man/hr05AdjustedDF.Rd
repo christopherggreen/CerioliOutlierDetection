@@ -23,7 +23,7 @@ hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "GM14"))
 	case of the MCD.}
   \item{m.asy}{(Numeric) Asymptotic Wishart degrees of freedom. 
   	The default value uses \code{\link{ch99AsymptoticDF}} to 
-	obtain the the asymptotic value, but the user can also 
+	obtain the the finite-sample asymptotic value, but the user can also 
 	provide a pre-computed value.}
   \item{method}{Either "HR05" to use the method of Hardin and Rocke (2005),
     or "GM14" to use the method of Green and Martin (2014).}
@@ -59,8 +59,8 @@ hr05AdjustedDF( n.obs, p.dim, mcd.alpha, m.asy, method = c("HR05", "GM14"))
 \references{
 C. G. Green and R. Douglas Martin. An extension of a method of Hardin and Rocke, with
 an application to multivariate outlier detection via the IRMCD method of Cerioli.
-Working Paper, 2014. Available from 
-\url{http://students.washington.edu/cggreen/uwstat/papers/cerioli_extension.pdf}
+Working Paper, 2017. Available from 
+\url{http://christopherggreen.github.io/papers/hr05_extension.pdf}
 
 J. Hardin and D. M. Rocke. The distribution of robust distances. Journal of Computational
 and Graphical Statistics, 14:928-946, 2005.

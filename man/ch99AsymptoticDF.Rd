@@ -1,8 +1,8 @@
 \name{ch99AsymptoticDF}
 \alias{ch99AsymptoticDF}
 \title{
-  Croux and Haesbroeck (1999) asymptotic parameters
-  for the MCD estimate
+  Croux and Haesbroeck (1999) finite-sample asymptotic approximation
+  parameters for the MCD estimate
 }
 \description{
   Computes the asymptotic Wishart degrees of freedom and
