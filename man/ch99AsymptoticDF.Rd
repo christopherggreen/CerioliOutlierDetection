@@ -51,10 +51,10 @@ Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>
 \references{
 Christopher Croux and Gentiane Haesbroeck. Influence function and efficiency of the minimum
 covariance determinant scatter matrix estimator. Journal of Multivariate Analysis,
-71:161-190, 1999.
+71:161-190, 1999. \doi{10.1006/jmva.1999.1839}
 
 J. Hardin and D. M. Rocke. The distribution of robust distances. Journal of Computational
-and Graphical Statistics, 14:928-946, 2005.
+and Graphical Statistics, 14:928-946, 2005. \doi{10.1198/106186005X77685}
 }
 \examples{
 # compare to table from p941 of Hardin and Rocke (2005)

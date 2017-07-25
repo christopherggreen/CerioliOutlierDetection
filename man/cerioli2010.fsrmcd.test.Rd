@@ -117,9 +117,11 @@ Written and maintained by Christopher G. Green <christopher.g.green@gmail.com>
 \references{
 Andrea Cerioli. Multivariate outlier detection with high-breakdown estimators. 
 Journal of the American Statistical Association, 105(489):147-156, 2010.
+\doi{10.1198/jasa.2009.tm09147}
 
 Andrea Cerioli, Marco Riani, and Anthony C. Atkinson. Controlling the size of multivariate
 outlier tests with the MCD estimator of scatter. Statistical Computing, 19:341-353, 2009.
+\doi{10.1007/s11222-008-9096-5}
 }
 \seealso{
   \code{\link{cerioli2010.irmcd.test}}

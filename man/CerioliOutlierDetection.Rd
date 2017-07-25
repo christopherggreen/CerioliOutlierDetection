@@ -37,6 +37,7 @@ with advice and support from Doug Martin.
 \references{
 Andrea Cerioli. Multivariate outlier detection with high-breakdown estimators. 
 Journal of the American Statistical Association, 105(489):147-156, 2010.
+\doi{10.1198/jasa.2009.tm09147}
 
 C. G. Green and R. Douglas Martin. An extension of a method of Hardin and Rocke, with
 an application to multivariate outlier detection via the IRMCD method of Cerioli.
@@ -44,6 +45,6 @@ Working Paper, 2017. Available from
 \url{http://christopherggreen.github.io/papers/hr05_extension.pdf}
 
 J. Hardin and D. M. Rocke. The distribution of robust distances. Journal of Computational
-and Graphical Statistics, 14:928-946, 2005.
+and Graphical Statistics, 14:928-946, 2005. \doi{10.1198/106186005X77685}
 }
 \keyword{ package }
