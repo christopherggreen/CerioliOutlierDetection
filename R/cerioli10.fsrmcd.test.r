@@ -24,7 +24,8 @@ function( datamat, mcd.alpha=max.bdp.mcd.alpha(n,v),
   # estimate using the constants defined in Cerioli (2010)
 
   h <- robustbase::h.alpha.n(mcd.alpha,n,v) # size of subsamples
-  mcd.out   <- robustbase::covMcd(datamat, alpha=mcd.alpha)
+  # 2017-12-05 nsamp, nmini, trace weren't being passed into covMcd
+  mcd.out   <- robustbase::covMcd(datamat, alpha=mcd.alpha, nsamp=nsamp, nmini=nmini, trace=trace)
   # cut down to just fast mcd call, only need a few things here
   # 2014-07-31 reverting back to covMcd---private functions not allowed 
   # on CRAN
