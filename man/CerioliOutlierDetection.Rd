@@ -14,12 +14,12 @@ MCD-based Mahalanobis distances using the distribution approximations
 developed by Hardin and Rocke (2005) and Green and Martin (2014).
 }
 \details{
-  \tabular{ll}{
-    Package: \tab CerioliOutlierDetection\cr
-    Type: \tab Package\cr
-    Version: \tab 1.1.5\cr
-  }
-
+  %\tabular{ll}{
+  %  Package: \tab CerioliOutlierDetection\cr
+  %  Type: \tab Package\cr
+  %  Version: \tab 1.1.13\cr
+  %}
+  %
   The function \code{cerioli2010.irmcd.test()} provides the outlier detection 
   methodology of Cerioli (2010), and is probably the best place for a new user
   of this package to start. See the documentation for that function for examples.
