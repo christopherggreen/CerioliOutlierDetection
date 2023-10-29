@@ -150,8 +150,8 @@ mean( results$outliers[,1,drop=TRUE] )
 \dontrun{
 
   require(rrcov) # for CovMcd
-  require(alr3)  # banknote data set lives here
-  data(banknote, package="alr3")
+  require(mclust)  # banknote data set lives here
+  data(banknote, package="mclust")
   # length, width of left edge, width of right edge,
   # width of bottom edge, width of top edge, length
   # of image diagonal, counterfeit (1=counterfeit)
@@ -159,7 +159,7 @@ mean( results$outliers[,1,drop=TRUE] )
   bnk.gamma <- 0.01
   # genuine banknotes
   # classical mean and covariance
-  banknote.real <- banknote[ banknote[,"Y"]==0, 1:6 ]
+  banknote.real <- banknote[ banknote[,"Status"]=="genuine", 2:7 ]
   cov.cls <- CovClassic( banknote.real  )
   # 1 - (1 - 0.01)^(1/100) quantile of scaled-Beta distribution
   # with m=100 and v=6
@@ -201,7 +201,7 @@ mean( results$outliers[,1,drop=TRUE] )
 
   # forged banknotes
   # classical mean and covariance
-  banknote.fake <- banknote[ banknote[,"Y"]==1, 1:6 ]
+  banknote.fake <- banknote[ banknote[,"Status"]=="counterfeit", 2:7 ]
   cov.cls <- CovClassic( banknote.fake  )
   # 1 - (1 - 0.01)^(1/100) quantile of scaled-Beta distribution
   # with m=100 and v=6
